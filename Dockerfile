@@ -67,7 +67,6 @@ RUN apk -U upgrade \
  && bundle install -j$(getconf _NPROCESSORS_ONLN) --deployment --clean --no-cache --without test development \
  && yarn install --pure-lockfile --ignore-engines \
 
- && SKIP_POST_DEPLOYMENT_MIGRATIONS=true RAILS_ENV=production bundle exec rails db:migrate \
 # Precompile Mastodon assets
  && OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder bundle exec rails assets:precompile \
 
